@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
-    origin: 'https://gabarsinghrawat.netlify.app',
+    origin: 'https://d1ac-223-178-208-141.in.ngrok.io',
         methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 
 }));

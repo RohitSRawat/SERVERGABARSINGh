@@ -13,9 +13,11 @@ const fs = require('fs');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 app.use(cors({
-    origin: ['https://gabarsinghrawat.netlify.app']
+    origin: 'https://gabarsinghrawat.netlify.app'
 }));
+
 const uploadmemory = multer({
   storage: memory,
   fileFilter: (req, file, cb) => {

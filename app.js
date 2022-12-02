@@ -73,7 +73,8 @@ const upload = multer({
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('build'))
 app.get('*',(req,res) => {
-        req.sendFile(path.resolve(__dirname,"build",'index.html'))
+         res.send('Hello World!')
+
     })
     
 app.post("/fetchimage", uploadmemory.single("Image"), async (req, res) => {

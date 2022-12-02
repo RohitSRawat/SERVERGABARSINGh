@@ -102,7 +102,11 @@ console.log(req.file.buffer)
   }
 });
 
+app.post("/check",(req,res) => {
+    res.status(201).send('yes sir');
 
+
+})
 
 app.post("/fetchs", uploadmemory.fields([{
   name: 'driver', maxCount: 1

@@ -10,13 +10,10 @@ const sharp = require('sharp')
 
 const memory = multer.memoryStorage();
 const fs = require('fs');
+app.use(cors({credentials: true, origin: 'https://gabarsinghrawat.netlify.app'}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-app.use(cors({
-    origin: '*'
-}));
 
 const uploadmemory = multer({
   storage: memory,
@@ -69,16 +66,11 @@ const upload = multer({
 
 
 
+app.get('/hello',(req,res)  => {
 
+  res.send('hello')
+})
 
-
-if(process.env.NODE_ENV === 'production'){
-    app.use(express.static('build'))
-app.get('*',(req,res) => {
-         res.send('Hello World!')
-
-    })
-    
 app.post("/fetchimage", uploadmemory.single("Image"), async (req, res) => {
   try {
 
@@ -96,15 +88,12 @@ console.log(req.file.buffer)
     res.status(201).send("data:image/jpeg;base64," + base64data);
 
   } catch (error) {
+    console.log(error)
     res.status(400).send(error);
   }
 });
 
-app.post("/check",(req,res) => {
-    res.status(201).send('yes sir');
 
-
-})
 
 app.post("/fetchs", uploadmemory.fields([{
   name: 'driver', maxCount: 1
@@ -196,7 +185,6 @@ console.log(error)
   }
 });
 
-}
 
 
 app.listen(port, () => {

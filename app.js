@@ -170,13 +170,13 @@ console.log(driverdata)
       pdfDoc.font('Helvetica').fontSize(16).text('DATE:', 40, 400,{ align: "right", width: 440 });
       pdfDoc.font('Helvetica').fontSize(16).text('NAME:', 40, 430,{ align: "right", width: 440 });
       pdfDoc.font('Helvetica').fontSize(16).text('COURIER NAME:', 40, 460,{ align: "right", width: 440 });
-          pdfDoc.font('Helvetica').fontSize(16).text('GRN:', 40, 490,{ align: "right", width: 440 });
 
       pdfDoc.font('Helvetica').fontSize(16).text(driverdata.date, 490, 400,{ align: "left", width: 490 });
       pdfDoc.font('Helvetica').fontSize(16).text(driverdata.name, 490, 430,{ align: "left", width: 490 });
       pdfDoc.font('Helvetica').fontSize(16).text(driverdata.couriername, 490, 460,{ align: "left", width: 490 });
-      pdfDoc.font('Helvetica').fontSize(16).text(driverdata.grn, 490, 490,{ align: "left", width: 490 });
-
+      pdfDoc.addPage();
+      pdfDoc.font('Helvetica').fontSize(34).text('GRN', 0, 20,{ align: "right", width: 440 });
+      pdfDoc.font('Helvetica').fontSize(16).text(driverdata.grn, 0, 60,{ align: "left", width: 490 });
       pdfDoc.end();
      
 

@@ -131,7 +131,7 @@ let fontBold = 'Helvetica-Bold';
 let driverdata = req.body
 console.log(driverdata)
    //(1190.55 x 1683.78)
-      let pdfDoc = new pdfKit({ size: [1100,600], bufferPages: true});
+      let pdfDoc = new pdfKit({ size: [1100,800], bufferPages: true});
       var date = new Date().getTime()  
 
       let buffers = [];
@@ -151,7 +151,7 @@ console.log(driverdata)
       // pdfDoc.pipe(fs.createWriteStream(`${date}.pdf`));
 
       pdfDoc.font(fontBold).fontSize(20).text('Driver information',5,5, { width: 1100,align: "center" });
-      pdfDoc.rect(30, 30, 1020, 500).stroke();
+      pdfDoc.rect(30, 30, 1020, 700).stroke();
 
 
       pdfDoc.font('Helvetica').fontSize(16).text('DRIVER PHOTO', 40, 40,{ align: "center", width: 300 });
@@ -170,13 +170,13 @@ console.log(driverdata)
       pdfDoc.font('Helvetica').fontSize(16).text('DATE:', 40, 400,{ align: "right", width: 440 });
       pdfDoc.font('Helvetica').fontSize(16).text('NAME:', 40, 430,{ align: "right", width: 440 });
       pdfDoc.font('Helvetica').fontSize(16).text('COURIER NAME:', 40, 460,{ align: "right", width: 440 });
+      pdfDoc.font('Helvetica').fontSize(16).text('GRN', 40, 490,{ align: "right", width: 440 });
 
       pdfDoc.font('Helvetica').fontSize(16).text(driverdata.date, 490, 400,{ align: "left", width: 490 });
       pdfDoc.font('Helvetica').fontSize(16).text(driverdata.name, 490, 430,{ align: "left", width: 490 });
       pdfDoc.font('Helvetica').fontSize(16).text(driverdata.couriername, 490, 460,{ align: "left", width: 490 });
-      pdfDoc.addPage();
-      pdfDoc.font('Helvetica').fontSize(34).text('GRN', 0, 20,{ align: "right", width: 440 });
-      pdfDoc.font('Helvetica').fontSize(16).text(driverdata.grn, 0, 60,{ align: "left", width: 490 });
+      pdfDoc.font('Helvetica').fontSize(16).text(driverdata.grn.trim().replace(/\r\n/g, " "), 490, 490,{ align: "left", width: 490 });
+
       pdfDoc.end();
      
 
